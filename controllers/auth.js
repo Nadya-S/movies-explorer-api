@@ -3,7 +3,8 @@ const jwt = require('jsonwebtoken');
 const User = require('../models/user');
 const { conflictMessage, badRequestMessage } = require('../constants/messages');
 
-const { NODE_ENV, JWT_SECRET } = process.env;
+// const { NODE_ENV, JWT_SECRET } = process.env;
+const { JWT_SECRET_KEY } = require('../config')
 const { BadRequestError, ConflictError } = require('../errors/Errors');
 
 // POST /signup регистрация
@@ -46,7 +47,7 @@ module.exports.login = (req, res, next) => {
       // создадим токен
       const token = jwt.sign(
         { _id: user._id },
-        NODE_ENV === 'production' ? JWT_SECRET : 'dev-secret',
+        JWT_SECRET_KEY,
         { expiresIn: '7d' },
       );
 
