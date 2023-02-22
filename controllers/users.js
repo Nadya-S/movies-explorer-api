@@ -1,11 +1,11 @@
 const User = require('../models/user');
 const { NotFoundError, BadRequestError, ConflictError } = require('../errors/Errors');
-const { notfoundUserMessage, badRequestMessage, conflictMessage } = require('../constants/messages');
+const { notFoundUserMessage, badRequestMessage, conflictMessage } = require('../constants/messages');
 
 // GET /users/me
 module.exports.findMyProfile = (req, res, next) => {
   User.findById(req.user._id)
-    .orFail(new NotFoundError(notfoundUserMessage))
+    .orFail(new NotFoundError(notFoundUserMessage))
     .then((user) => {
       res.send(user);
     })
@@ -18,7 +18,7 @@ module.exports.findMyProfile = (req, res, next) => {
 module.exports.updateProfile = (req, res, next) => {
   const { name, email } = req.body;
   User.findByIdAndUpdate(req.user._id, { name, email }, { new: true, runValidators: true })
-    .orFail(new NotFoundError(notfoundUserMessage))
+    .orFail(new NotFoundError(notFoundUserMessage))
     .then((user) => {
       res.send(user);
     })
