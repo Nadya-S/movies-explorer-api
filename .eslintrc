@@ -1,8 +1,10 @@
 {
-"extends": "airbnb-base",
+"extends": [
+  "airbnb-base",
+  "plugin:regexp/no-useless-escape"],
+
   "rules": {
     "no-underscore-dangle": ["error", { "allow": ["_id"] }],
-    "no-console": ["error", { "allow": ["log"] }],
-    "no-useless-escape": "off"
+    "no-console": ["error", { "allow": ["log"] }]
   }
 }
