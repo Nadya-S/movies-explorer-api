@@ -1,7 +1,6 @@
 const { celebrate, Joi } = require('celebrate');
 
-module.exports.regExeLink = /^(http|https)\:\/\/(www\.)?[a-z0-9\-]*\.[a-z]*[a-zA-Z0-9\-\/]*[a-zA-Z0-9\.*\/\-\_\~\:\?\%\#\[\]\@\!\$\&\'\(\)\*\+\,\;\=]*\#?$/;
-
+module.exports.regExeLink = /^(https?:\/\/)?([\w-]{1,32}\.[\w-]{1,32})[^\s@]*$/;
 module.exports.idValidator = celebrate({
   params: Joi.object().keys({
     _id: Joi.string().length(24).hex(),

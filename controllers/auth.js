@@ -3,8 +3,7 @@ const jwt = require('jsonwebtoken');
 const User = require('../models/user');
 const { conflictMessage, badRequestMessage } = require('../constants/messages');
 
-// const { NODE_ENV, JWT_SECRET } = process.env;
-const { JWT_SECRET_KEY } = require('../config')
+const { JWT_SECRET_KEY } = require('../config');
 const { BadRequestError, ConflictError } = require('../errors/Errors');
 
 // POST /signup регистрация

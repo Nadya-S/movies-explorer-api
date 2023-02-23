@@ -13,7 +13,7 @@ const {
 
 // GET /movies
 module.exports.findAllMovies = (req, res, next) => {
-  Movie.find({})
+  Movie.find({ owner: req.user._id })
     .then((data) => {
       res.send(data);
     })
