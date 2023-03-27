@@ -6,6 +6,7 @@ const { PORT = 3000 } = process.env;
 const mongoose = require('mongoose');
 const helmet = require('helmet');
 const { errors } = require('celebrate');
+const corsHandling = require('./middlewares/cors-handling');
 const { MONGO_URL } = require('./config');
 const limiter = require('./utils/limiter');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
@@ -13,6 +14,7 @@ const router = require('./routes');
 const err = require('./middlewares/err');
 
 const app = express();
+app.use(corsHandling);
 
 app.use(helmet());
 app.use(requestLogger);
